@@ -10,7 +10,7 @@ function App() {
       <main className="w-full h-screen flex justify-center items-center bg-main">
         <div className="w-2/3 p-3 bg-white rounded-lg h-3/4 flex">
           {/* SIDE NAV */}
-          <div className="flex flex-col gap-3 py-4 px-4 w-1/4 h-full bg-[url('./assets/bg-sidebar-desktop.svg')] bg-cover bg-center rounded-lg">
+          <div className="flex flex-col gap-5 p-5 w-[30%] h-full bg-[url('./assets/bg-sidebar-desktop.svg')] bg-cover bg-center rounded-lg">
             {/* "YOUR INFO" nav */}
             <NavLink to="/" className="flex items-center gap-4">
               {({ isActive }) => (
@@ -69,6 +69,7 @@ function App() {
           {/*  */}
           <div className="w-3/4 flex justify-center items-center p-3">
             <Outlet />
+            
           </div>
         </div>
       </main>

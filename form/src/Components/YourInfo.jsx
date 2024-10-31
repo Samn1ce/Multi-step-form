@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
 function YourInfo() {
-
-    const [isFocused, setIsFocused] = useState(false);
+    // FOCUSED STATE
+    const [isNameFocused, setIsNameFocused] = useState(false);
+    const [isEmailFocused, setIsEmailFocused] = useState(false);
+    const [isNumFocused, setIsNumFocused] = useState(false);
 
     return(
         <main className="w-2/3 h-full grid">
@@ -16,35 +18,35 @@ function YourInfo() {
                     <label for="name" className="text-xs font-semibold">Name</label>
                     <br/>
                     <div 
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
-                        className={`h-10 w-full border-1 px-4 py-1 rounded-lg ${isFocused ? 'border-[#8883B6]' : 'border-zinc-200'}`}
+                        onFocus={() => setIsNameFocused(true)}
+                        onBlur={() => setIsNameFocused(false)}
+                        className={`h-10 w-full border-1 px-4 py-1 rounded-lg hover:border-[#8883B6] transition-all ${isNameFocused ? 'border-[#8883B6]' : 'border-zinc-200'}`}
                     >
-                        <input className="h-full w-full outline-none" type="text" id="name" name="firstName" />
+                        <input className="h-full w-full outline-none" type="text" id="name" name="firstName" placeholder="e.g. Stephen King" />
                     </div>
                 </div>
                 {/*  */}
                 <div>
-                    <label for="name" className="text-xs font-semibold">Email Address</label>
+                    <label for="email" className="text-xs font-semibold">Email Address</label>
                     <br />
                     <div 
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
-                        className={`h-10 w-full border-1 px-4 py-1 rounded-lg ${isFocused ? 'border-[#8883B6]' : 'border-zinc-200'}`}
+                        onFocus={() => setIsEmailFocused(true)}
+                        onBlur={() => setIsEmailFocused(false)}
+                        className={`h-10 w-full border-1 px-4 py-1 rounded-lg hover:border-[#8883B6] transition-all ${isEmailFocused ? 'border-[#8883B6]' : 'border-zinc-200'}`}
                     >
-                        <input className="h-full w-full outline-none" type="text" id="name" name="firstName" />
+                        <input className="h-full w-full outline-none" type="text" id="email" name="emailAddress" placeholder="e.g. StephenKing@lorem.com" />
                     </div>
                 </div>
                 {/*  */}
                 <div>
-                    <label for="name" className="text-xs font-semibold">Phone Number</label>
+                    <label for="number" className="text-xs font-semibold">Phone Number</label>
                     <br />
                     <div 
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
-                        className={`h-10 w-full border-1 px-4 py-1 rounded-lg ${isFocused ? 'border-[#8883B6]' : 'border-zinc-200'}`}
+                        onFocus={() => setIsNumFocused(true)}
+                        onBlur={() => setIsNumFocused(false)}
+                        className={`h-10 w-full border-1 px-4 py-1 rounded-lg hover:border-[#8883B6] transition-all ${isNumFocused ? 'border-[#8883B6]' : 'border-zinc-200'}`}
                     >
-                        <input className="h-full w-full outline-none" type="text" id="name" name="firstName" />
+                        <input className="h-full w-full outline-none" type="text" id="number" name="phoneNumber" placeholder="e.g. +1 234 567 890" />
                     </div>
                 </div>
             </form>
