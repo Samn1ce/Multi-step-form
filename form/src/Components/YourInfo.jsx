@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function YourInfo() {
     // FOCUSED STATE
@@ -14,15 +15,27 @@ function YourInfo() {
         }
     )
 
-    function handleSubmit() {
-        console.log(form); // Log current form values
+    const [filled, setFilled] = useState(true);
+
+    function handleFormSubmit() {
+         // Log current form values
+
+        if ( form.name === '' || form.email === '' || form.phoneNumber === '' ) {
+            console.log('error');
+            setFilled(false)
+        } else {
+            console.log(form)
+            setForm({
+                name: '',
+                email: '',
+                phoneNumber: ''
+            });
+
+            return (<NavLink to={`/select-plan`}></NavLink>)
+        }
 
         // Reset form by setting all values back to empty strings
-        setForm({
-            name: '',
-            email: '',
-            phoneNumber: ''
-        });
+        
     }
 
     return(
@@ -34,7 +47,10 @@ function YourInfo() {
             {/* INPUT FIELDS */}
             <form className="flex flex-col gap-5">
                 <div>
-                    <label htmlFor="name" className="text-xs font-semibold">Name</label>
+                    <div className="flex justify-between">
+                        <label htmlFor="name" className="text-xs font-semibold">Name</label>
+                        <div className={`text-red-500 text-xs font-bold ${!setFilled && form.name === '' ? 'block' : 'hidden'}`}>This field is required</div>
+                    </div>
                     <input
                         className="h-10 w-full border px-4 rounded-lg outline-none"
                         type="text"
@@ -47,7 +63,10 @@ function YourInfo() {
                 </div>
 
                 <div>
-                    <label htmlFor="email" className="text-xs font-semibold">Email</label>
+                    <div className="flex justify-between">
+                        <label htmlFor="name" className="text-xs font-semibold">Email address</label>
+                        <div className={`text-red-500 text-xs font-bold ${!setFilled && form.email === '' ? 'block' : 'hidden'}`}>This field is required</div>
+                    </div>
                     <input
                         className="h-10 w-full border px-4 rounded-lg outline-none"
                         type="email"
@@ -60,7 +79,10 @@ function YourInfo() {
                 </div>
 
                 <div>
-                    <label htmlFor="phoneNumber" className="text-xs font-semibold">Phone Number</label>
+                    <div className="flex justify-between">
+                        <label htmlFor="name" className="text-xs font-semibold">Phone Number</label>
+                        <div className={`text-red-500 text-xs font-bold ${!setFilled && form.phoneNumber === '' ? 'block' : 'hidden'}`}>This field is required</div>
+                    </div>
                     <input
                         className="h-10 w-full border px-4 rounded-lg outline-none"
                         type="tel"
@@ -75,7 +97,7 @@ function YourInfo() {
             {/* BUTTON */}
             <div className="flex justify-end items-end">
                 <button 
-                onClick={handleSubmit}
+                onClick={ handleFormSubmit }
                 className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all">Next Step</button>
             </div>
         </main>

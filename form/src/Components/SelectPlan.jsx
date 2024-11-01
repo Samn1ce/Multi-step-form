@@ -25,6 +25,10 @@ function SelectPlan() {
         },
     ]);
 
+    function handlePlanSubmit() {
+        console.log(selected.plans)
+    }
+
     const [duration, setDuration] = useState(false);
 
     function toggleDuration() {
@@ -82,7 +86,12 @@ function SelectPlan() {
             {/* BUTTON */}
             <div className="flex justify-between items-baseline">
                 <button className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all">Go Back</button>
-                <button className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all">Next Step</button>
+                <button 
+                    onClick={ handlePlanSubmit }
+                    className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
+                >
+                    Next Step
+                </button>
             </div>
         </main>
     );
