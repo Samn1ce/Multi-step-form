@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SelectPlan() {
+
+    const navigate = useNavigate()
 
     const [selected, setSelected] = useState(0);
 
@@ -25,19 +28,26 @@ function SelectPlan() {
         },
     ]);
 
-    function handlePlanSubmit() {
-        console.log(selected.plans)
-    }
-
-    const [duration, setDuration] = useState(false);
-
-    function toggleDuration() {
-        if (!duration) {
-            setDuration(false)
-        }  else {
-            setDuration(true)
+    const selectedIndex = () => {
+        if (selected === 1) {
+            return plans.index[0]
+        } else if (selected === 2) {
+            return plans.index[1]
+        } else {
+            return plans.index[2]
         }
     }
+
+    function handlePlanSubmit() {
+        console.log(plans.index[(selected - 1)], duration === 1 ? 'Yearly' : 'Monthly')
+        navigate('/add-ons')
+    }
+
+    const [duration, setDuration] = useState(0);
+
+    function toggleDuration() {
+        setDuration(prev => (prev + 1) % 2)
+    };
 
     return (
         <main className="w-2/3 h-full flex flex-col justify-between">
@@ -77,7 +87,9 @@ function SelectPlan() {
                     <div className="w-12 h-5 bg-button rounded-full flex gap-2 p-1">
                         <div 
                             onClick={toggleDuration}
-                            className={`w-1/2 h-full bg-white rounded-full ${!duration ? 'translate-x-6' : ''}`}></div>
+                            className={`w-1/2 h-full bg-white rounded-full transition-all cursor-pointer ${duration === 1 ? 'translate-x-6' : ''}`}
+                        >
+                        </div>
                         <div className="w-1/2 h-full rounded-full"></div>
                     </div>
                     <p>Yearly</p>
