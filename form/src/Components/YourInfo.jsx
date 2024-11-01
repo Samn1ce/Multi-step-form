@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function YourInfo() {
+    // NAVIGATE TO NEXT PAGE AFTER BUTTON IS CLICKED
+    const navigate = useNavigate();
+
     // FOCUSED STATE
     const [isNameFocused, setIsNameFocused] = useState(false);
     const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -13,13 +16,12 @@ function YourInfo() {
             email: '',
             phoneNumber: ''
         }
-    )
+    );
 
     const [filled, setFilled] = useState(true);
 
-    function handleFormSubmit() {
-         // Log current form values
-
+    function handleFormSubmit(e) {
+        e.preventDefault()
         if ( form.name === '' || form.email === '' || form.phoneNumber === '' ) {
             console.log('error');
             setFilled(false)
@@ -30,13 +32,10 @@ function YourInfo() {
                 email: '',
                 phoneNumber: ''
             });
-
-            return (<NavLink to={`/select-plan`}></NavLink>)
-        }
-
-        // Reset form by setting all values back to empty strings
-        
-    }
+            setFilled(true)
+            navigate('/select-plan')
+        }        
+    };
 
     return(
         <main className="w-2/3 h-full grid">
@@ -49,7 +48,7 @@ function YourInfo() {
                 <div>
                     <div className="flex justify-between">
                         <label htmlFor="name" className="text-xs font-semibold">Name</label>
-                        <div className={`text-red-500 text-xs font-bold ${!setFilled && form.name === '' ? 'block' : 'hidden'}`}>This field is required</div>
+                        <div className={`text-red-500 text-xs font-bold ${filled ? 'hidden' : 'block'} ${form.name !== '' ? 'hidden' : 'block'}`}>This field is required</div>
                     </div>
                     <input
                         className="h-10 w-full border px-4 rounded-lg outline-none"
@@ -65,7 +64,7 @@ function YourInfo() {
                 <div>
                     <div className="flex justify-between">
                         <label htmlFor="name" className="text-xs font-semibold">Email address</label>
-                        <div className={`text-red-500 text-xs font-bold ${!setFilled && form.email === '' ? 'block' : 'hidden'}`}>This field is required</div>
+                        <div className={`text-red-500 text-xs font-bold ${filled ? 'hidden' : 'block'} ${form.email !== '' ? 'hidden' : 'block'}`}>This field is required</div>
                     </div>
                     <input
                         className="h-10 w-full border px-4 rounded-lg outline-none"
@@ -81,7 +80,7 @@ function YourInfo() {
                 <div>
                     <div className="flex justify-between">
                         <label htmlFor="name" className="text-xs font-semibold">Phone Number</label>
-                        <div className={`text-red-500 text-xs font-bold ${!setFilled && form.phoneNumber === '' ? 'block' : 'hidden'}`}>This field is required</div>
+                        <div className={`text-red-500 text-xs font-bold ${filled ? 'hidden' : 'block'} ${form.phoneNumber !== '' ? 'hidden' : 'block'}`}>This field is required</div>
                     </div>
                     <input
                         className="h-10 w-full border px-4 rounded-lg outline-none"
