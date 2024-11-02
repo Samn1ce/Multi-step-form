@@ -12,7 +12,6 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />, // App acts as the layout
-    errorElement: <Error />,
     children: [
       {
         path: '/', // Default route
