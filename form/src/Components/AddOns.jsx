@@ -1,4 +1,29 @@
+import { useState } from "react";
+
 function AddOns() {
+
+    const [addOns, setAddOns] = useState([
+        {
+            id: 1,
+            title: 'Online Service',
+            service: 'Access to multiplayer games',
+            price: '1/mo'
+        },
+        {
+            id: 2,
+            title: 'Larger Storage',
+            service: 'Extra 1TB of cloud storage',
+            price: '2/mo'
+        },
+        {
+            id: 3,
+            title: 'Customizable Profile',
+            service: 'Customize theme on your profile',
+            price: '2/mo'
+        },
+    ]);
+
+    const [isChecked, setIsChecked] = useState(false)
 
     return (
         <main className="w-2/3 h-full flex flex-col justify-between">
@@ -9,30 +34,19 @@ function AddOns() {
             {/* ADD-ONS */}
             <div className="w-full flex flex-col gap-4 mb-5">
                 {/*  */}
-                <div className="w-full border bg-focus flex justify-between items-center py-3 px-5 rounded-lg">
-                    <input type="checkbox" />
-                    <div>
-                        <h5 className="font-bold text-indigo-800">Online Service</h5>
-                        <p className="text-xs text-gray-400 font-bold">Access to multiplayer games</p>
+                {addOns.map((a, index) => (
+                    <div 
+                        key={a.id}
+                        className="w-full border flex justify-between items-center py-3 px-5 rounded-lg hover:border-focus cursor-pointer"
+                    >
+                        <input type="checkbox" />
+                        <div>
+                            <h5 className="font-bold text-indigo-800">{a.title}</h5>
+                            <p className="text-xs text-gray-400 font-bold">{a.service}</p>
+                        </div>
+                        <p className="text-xs text-purple">+${a.price}</p>
                     </div>
-                    <p className="text-xs text-purple">+$1/mo</p>
-                </div>
-                <div className="w-full border bg-focus flex justify-between items-center py-3 px-5 rounded-lg">
-                    <input type="checkbox" />
-                    <div>
-                        <h5 className="font-bold text-indigo-800">Online Service</h5>
-                        <p className="text-xs text-gray-400 font-bold">Access to multiplayer games</p>
-                    </div>
-                    <p className="text-xs text-purple">+$1/mo</p>
-                </div>
-                <div className="w-full border bg-focus flex justify-between items-center py-3 px-5 rounded-lg">
-                    <input type="checkbox" />
-                    <div>
-                        <h5 className="font-bold text-indigo-800">Online Service</h5>
-                        <p className="text-xs text-gray-400 font-bold">Access to multiplayer games</p>
-                    </div>
-                    <p className="text-xs text-purple">+$1/mo</p>
-                </div>
+                ))}
             </div>
             {/* BUTTON */}
             <div className="flex justify-between items-baseline">

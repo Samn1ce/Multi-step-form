@@ -51,7 +51,9 @@ function YourInfo() {
                         <div className={`text-red-500 text-xs font-bold ${filled ? 'hidden' : 'block'} ${form.name !== '' ? 'hidden' : 'block'}`}>This field is required</div>
                     </div>
                     <input
-                        className="h-10 w-full border px-4 rounded-lg outline-none"
+                        onFocus={() => setIsNameFocused(true)}
+                        onBlur={() => setIsNameFocused(false)}
+                        className={`h-10 w-full border px-4 rounded-lg outline-none ${isNameFocused === true ? 'bg-focus border-focus' : ''}`}
                         type="text"
                         id="name"
                         name="name"
@@ -67,7 +69,9 @@ function YourInfo() {
                         <div className={`text-red-500 text-xs font-bold ${filled ? 'hidden' : 'block'} ${form.email !== '' ? 'hidden' : 'block'}`}>This field is required</div>
                     </div>
                     <input
-                        className="h-10 w-full border px-4 rounded-lg outline-none"
+                        onFocus={() => setIsEmailFocused(true)}
+                        onBlur={() => setIsEmailFocused(false)}
+                        className={`h-10 w-full border px-4 rounded-lg outline-none ${isEmailFocused === true ? 'bg-focus border-focus' : ''}`}
                         type="email"
                         id="email"
                         name="email"
@@ -83,7 +87,9 @@ function YourInfo() {
                         <div className={`text-red-500 text-xs font-bold ${filled ? 'hidden' : 'block'} ${form.phoneNumber !== '' ? 'hidden' : 'block'}`}>This field is required</div>
                     </div>
                     <input
-                        className="h-10 w-full border px-4 rounded-lg outline-none"
+                        onFocus={() => setIsNumFocused(true)}
+                        onBlur={() => setIsNumFocused(false)}
+                        className={`h-10 w-full border px-4 rounded-lg outline-none ${isNumFocused === true ? 'bg-focus border-focus' : ''}`}
                         type="tel"
                         id="phoneNumber"
                         name="phoneNumber"

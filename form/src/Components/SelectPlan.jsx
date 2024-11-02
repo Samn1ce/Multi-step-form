@@ -28,18 +28,8 @@ function SelectPlan() {
         },
     ]);
 
-    const selectedIndex = () => {
-        if (selected === 1) {
-            return plans.index[0]
-        } else if (selected === 2) {
-            return plans.index[1]
-        } else {
-            return plans.index[2]
-        }
-    }
-
     function handlePlanSubmit() {
-        console.log(plans.index[(selected - 1)], duration === 1 ? 'Yearly' : 'Monthly')
+        console.log(plans[selected], duration === 1 ? 'Yearly' : 'Monthly');
         navigate('/add-ons')
     }
 
