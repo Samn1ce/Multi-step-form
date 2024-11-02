@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function Summary() {
 
     return (
@@ -12,7 +14,7 @@ function Summary() {
                     <div className="flex justify-between items-center">
                         <div>
                             <p className="font-bold">Arcade(Monthly)</p>
-                            <p className="text-xs">change</p>
+                            <NavLink to="/select-plan" className="text-xs text-indigo-700 hover:underline">change</NavLink>
                         </div>
                         <p className="text-xs font-semibold">$9/mo</p>
                     </div>

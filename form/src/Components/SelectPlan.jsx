@@ -70,8 +70,8 @@ function SelectPlan() {
                             <div>
                                 <h5 className="font-bold text-indigo-800">{plan.title}</h5>
                                 <p className="text-xs text-gray-400 font-bold">${duration === 1 ? plan.yearly : plan.monthly}</p>
+                                <p className={`text-xs ${duration === 1 ? 'block' : 'hidden'}`}>2 Months free</p>
                             </div>
-                            <p className={`text-xs ${duration === 1 ? 'block' : 'hidden'}`}>2 Months free</p>
                         </div>
                     ))}
                 </div>
