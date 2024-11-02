@@ -46,9 +46,11 @@ function AddOns() {
     };
 
     function handleAddOnSubmit() {
-        console.log();
-        navigate('/summary')
+        const selectedAddOns = addOns.filter((addOn) => addOn.isChecked); // Filter only checked add-ons
+        console.log("Selected Add-Ons:", selectedAddOns); // Log selected add-ons
+        navigate('/summary'); // Navigate to the summary page
     }
+
 
     return (
         <main className="w-2/3 h-full flex flex-col justify-between">

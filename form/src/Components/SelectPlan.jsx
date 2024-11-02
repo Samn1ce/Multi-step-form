@@ -12,19 +12,22 @@ function SelectPlan() {
             id: 1,
             icon: './assets/icon-arcade.svg',
             title: 'Arcade',
-            duration: '9/mo'
+            monthly: '9/mo',
+            yearly: '90/yr'
         },
         {
             id: 2,
             icon: './assets/icon-advanced.svg',
             title: 'Advanced',
-            duration: '12/mo'
+            monthly: '12/mo',
+            yearly: '120/yr'
         },
         {
             id: 3,
             icon: './assets/icon-pro.svg',
             title: 'Pro',
-            duration: '15/mo'
+            monthly: '15/mo',
+            yearly: '150/yr'
         },
     ]);
 
@@ -52,7 +55,7 @@ function SelectPlan() {
                         <div
                             key={plan.id}
                             onClick={() => setSelected(index)}
-                            className={`w-4/12 h-36 p-4 cursor-pointer border hover:border-indigo-500 
+                            className={`w-4/12 ${duration === 1 ? 'h-40' : 'h-36'} p-4 cursor-pointer border hover:border-indigo-500 
                             ${selected === index ? 'bg-indigo-50 border-indigo-500' : 'border-gray-200'}
                             flex flex-col justify-between rounded-md transition-all`}
                         >
@@ -66,8 +69,9 @@ function SelectPlan() {
                             {/* PLAN DETAIL */}
                             <div>
                                 <h5 className="font-bold text-indigo-800">{plan.title}</h5>
-                                <p className="text-xs text-gray-400 font-bold">${plan.duration}</p>
+                                <p className="text-xs text-gray-400 font-bold">${duration === 1 ? plan.yearly : plan.monthly}</p>
                             </div>
+                            <p className={`text-xs ${duration === 1 ? 'block' : 'hidden'}`}>2 Months free</p>
                         </div>
                     ))}
                 </div>

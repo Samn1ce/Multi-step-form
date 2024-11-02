@@ -1,8 +1,5 @@
-import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import './App.css'
-import BG from './assets/bg-sidebar-desktop.svg'
-import YourInfo from './Components/YourInfo'
 
 
 function App() {
