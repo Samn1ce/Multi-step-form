@@ -6,6 +6,7 @@ function SelectPlan() {
     const navigate = useNavigate()
 
     const [selected, setSelected] = useState(0);
+    const [duration, setDuration] = useState(0);
 
     const [plans] = useState([
         {
@@ -32,11 +33,16 @@ function SelectPlan() {
     ]);
 
     function handlePlanSubmit() {
-        console.log(plans[selected], duration === 1 ? 'Yearly' : 'Monthly');
+        const selectedPlan = plans[selected];
+        const billing = duration === 1 ? 'Yearly' : 'Monthly'
+
+        console.log(selectedPlan, billing);
+        localStorage.setItem('selectedPlan', JSON.stringify({
+            ...selectedPlan,
+            billing
+        }));
         navigate('/add-ons')
     }
-
-    const [duration, setDuration] = useState(0);
 
     function toggleDuration() {
         setDuration(prev => (prev + 1) % 2)

@@ -22,10 +22,11 @@ function YourInfo() {
 
     function handleFormSubmit(e) {
         e.preventDefault()
-        if ( form.name === '' || form.email === '' || form.phoneNumber === '' ) {
-            console.log('error');
+        if (form.name === '' || form.email === '' || form.phoneNumber === '') {
+            console.log('No detail was provided');
             setFilled(false)
         } else {
+            localStorage.setItem('userInfo', JSON.stringify(form));
             console.log(form)
             setForm({
                 name: '',
