@@ -2,25 +2,26 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
-import App from './App.jsx'
-import SelectPlan from './Components/SelectPlan.jsx'
-import YourInfo from './Components/YourInfo.jsx';
-import AddOns from './Components/AddOns.jsx'
-import Summary from './Components/Summary.jsx'
+// import App from './App.jsx'
+import SelectPlan from './Views/SelectPlan.jsx'
+import YourInfo from './Views/YourInfo.jsx';
+import AddOns from './Views/AddOns.jsx'
+import Summary from './Views/Summary.jsx'
+import Layout from './Views/Layout.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />, // App acts as the layout
+    element: <Layout />,
+    errorElement: <div>ERROR</div>,
     children: [
       {
-        path: '/', // Default route
+        index: true, // Default child route
         element: <YourInfo />,
-        errorElement: <div>ERROR</div>,
       },
       {
         path: '/select-plan',
-        element: <SelectPlan/>
+        element: <SelectPlan />
       },
       {
         path: '/add-ons',
