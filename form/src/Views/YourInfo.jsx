@@ -34,7 +34,7 @@ function YourInfo() {
                 phoneNumber: ''
             });
             setFilled(true)
-            navigate('/select-plan')
+            navigate('/layout/select-plan')
         }        
     };
 

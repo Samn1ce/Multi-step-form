@@ -46,9 +46,10 @@ function AddOns() {
     };
 
     function handleAddOnSubmit() {
-        const selectedAddOns = addOns.filter((addOn) => addOn.isChecked); // Filter only checked add-ons
+        const selectedAddOns = addOns.filter((addOn) => addOn.isChecked);
+        localStorage.setItem('selectedAddOns', JSON.stringify(selectedAddOns)); // Filter only checked add-ons
         console.log("Selected Add-Ons:", selectedAddOns); // Log selected add-ons
-        navigate('/summary'); // Navigate to the summary page
+        navigate('/layout/summary'); // Navigate to the summary page
     }
 
 

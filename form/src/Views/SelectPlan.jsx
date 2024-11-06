@@ -41,7 +41,7 @@ function SelectPlan() {
             ...selectedPlan,
             billing
         }));
-        navigate('/add-ons')
+        navigate('/layout/add-ons')
     }
 
     function toggleDuration() {
