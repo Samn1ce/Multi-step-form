@@ -7,7 +7,7 @@ function Layout() {
                 {/* SIDE NAV */}
                 <div className="flex flex-col gap-5 p-5 w-[30%] h-full bg-[url('./assets/bg-sidebar-desktop.svg')] bg-cover bg-center rounded-lg">
                     {/* "YOUR INFO" nav */}
-                    <NavLink to="your-info" className="flex items-center gap-4">
+                    <NavLink to="your-info" className="flex items-center gap-4 navlink-disabled">
                         {({ isActive }) => (
                             <div className="flex items-center gap-4">
                                 <div className={`flex justify-center items-center w-8 h-8 border-1 font-bold border-zinc-200 rounded-full ${isActive ? 'bg-blue-200' : 'text-zinc-200'}`}>1</div>
@@ -20,7 +20,7 @@ function Layout() {
                         )}
                     </NavLink>
                     {/* "SELECT PLAN" */}
-                    <NavLink to="select-plan" className="flex items-center gap-4">
+                    <NavLink to="select-plan" className="flex items-center gap-4 navlink-disabled">
                         {({ isActive }) => (
                             <>
                                 <div className={`flex justify-center items-center w-9 h-9 border font-bold border-zinc-200 ${isActive ? 'bg-blue-200' : 'text-zinc-200'} rounded-full`}>
@@ -35,7 +35,7 @@ function Layout() {
                         )}
                     </NavLink>
                     {/* ADD ONS */}
-                    <NavLink to="add-ons" className="flex items-center gap-4">
+                    <NavLink to="add-ons" className="flex items-center gap-4 navlink-disabled">
                         {({ isActive }) => (
                             <>
                                 <div className={`flex justify-center items-center w-9 h-9 border-1 font-bold border-zinc-200 ${isActive ? 'bg-blue-200 text-black' : 'text-zinc-200'} rounded-full`}>3</div>
@@ -48,7 +48,7 @@ function Layout() {
                         )}
                     </NavLink>
                     {/* SUMMARY */}
-                    <NavLink to="summary" className="flex items-center gap-4">
+                    <NavLink to="summary" className="flex items-center gap-4 navlink-disabled">
                         {({ isActive }) => (
                             <>
                                 <div className={`flex justify-center items-center w-9 h-9 border-1 font-bold border-zinc-200 ${isActive ? 'bg-blue-200' : 'text-zinc-200'} rounded-full`}>4</div>

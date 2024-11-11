@@ -84,7 +84,7 @@ function AddOns() {
             </div>
             {/* BUTTON */}
             <div className="flex justify-between items-baseline">
-                <button className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all">Go Back</button>
+                <button onClick={() => navigate(-1)} className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all">Go Back</button>
                 <button 
                     onClick={handleAddOnSubmit}
                     className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"

@@ -11,9 +11,17 @@ function Summary() {
         const savedAddOns = JSON.parse(localStorage.getItem('selectedAddOns')) ?? [];
         setSelectedAddOns(savedAddOns);
 
-        const savedSelectedPlan = JSON.parse(localStorage.getItem('summarySelectedPlan')) ?? []
+        const savedSelectedPlan = JSON.parse(localStorage.getItem('selectedPlan')) ?? [];
         setSummarySelectedPlan(savedSelectedPlan);
     }, []);
+
+    const calculateTotal = () => {
+        const planPrice = summarySelectedPlan[0]?.price
+            ? parseInt(summarySelectedPlan[0].price.replace(/[^\d]/g, ''))
+            : 0;
+        const addOnsTotal = selectedAddOns.reduce((total, addOn) => total + parseInt(addOn.price), 0);
+        return planPrice + addOnsTotal;
+    };
 
     function handleSummaryClick() {
         navigate('/layout/thank-you');
@@ -35,7 +43,7 @@ function Summary() {
                         >
                             <div>
                                 <p className="font-bold">{plan.title}</p>
-                                <NavLink to="/select-plan" className="text-xs text-indigo-700 hover:underline">change</NavLink>
+                                <NavLink to="/layout/select-plan" className="text-xs text-indigo-700 hover:underline">change</NavLink>
                             </div>
                             <p className="text-xs font-semibold">${plan.price}</p>
                         </div>
@@ -54,7 +62,7 @@ function Summary() {
                 <div className="flex justify-between text-xs text-gray-400 mx-5">
                     <p>Total (per month)</p>
                     <p className="text-lg text-indigo-700 font-bold">
-                        +${9 + selectedAddOns.reduce((total, addOn) => total + parseInt(addOn.price), 0)}/mo
+                        +${calculateTotal()}/{summarySelectedPlan[0]?.billing === 'Yearly' ? 'yr' : 'mo'}
                     </p>
                 </div>
             </div>

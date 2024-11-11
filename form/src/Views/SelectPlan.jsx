@@ -34,19 +34,26 @@ function SelectPlan() {
 
     function handlePlanSubmit() {
         const selectedPlan = plans[selected];
-        const billing = duration === 1 ? 'Yearly' : 'Monthly'
+        const billing = duration === 1 ? 'Yearly' : 'Monthly';
+        const price = duration === 1 ? selectedPlan.yearly : selectedPlan.monthly;
 
-        console.log(selectedPlan, billing);
-        localStorage.setItem('selectedPlan', JSON.stringify({
-            ...selectedPlan,
-            billing
-        }));
+        localStorage.setItem('selectedPlan', JSON.stringify([{
+            title: `${selectedPlan.title} (${billing})`,
+            price: price,
+            billing: billing
+        }]));
+
         navigate('/layout/add-ons')
     }
 
     function toggleDuration() {
         setDuration(prev => (prev + 1) % 2)
     };
+
+    function goBack() {
+        navigate(-1)
+        const prevInfo = localStorage.getItem('form')
+    }
 
     return (
         <main className="w-2/3 h-full flex flex-col justify-between">
@@ -97,7 +104,7 @@ function SelectPlan() {
             </div>
             {/* BUTTON */}
             <div className="flex justify-between items-baseline">
-                <button className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all">Go Back</button>
+                <button onClick={goBack} className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all">Go Back</button>
                 <button 
                     onClick={ handlePlanSubmit }
                     className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
