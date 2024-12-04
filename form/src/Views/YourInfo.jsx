@@ -131,10 +131,10 @@ function YourInfo() {
         </div>
       </form>
       {/* BUTTON */}
-      <div className="hidden md:flex justify-end items-end">
+      <div className="flex justify-end items-end mt-3 md:mt-0">
         <button
           onClick={handleFormSubmit}
-          className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
+          className="p-2 md:p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
         >
           Next Step
         </button>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Plans from "../assets/Plans.json";
 
 function SelectPlan() {
   const navigate = useNavigate();
@@ -7,32 +8,10 @@ function SelectPlan() {
   const [selected, setSelected] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  const [plans] = useState([
-    {
-      id: 1,
-      icon: "./assets/icon-arcade.svg",
-      title: "Arcade",
-      monthly: "9/mo",
-      yearly: "90/yr",
-    },
-    {
-      id: 2,
-      icon: "./assets/icon-advanced.svg",
-      title: "Advanced",
-      monthly: "12/mo",
-      yearly: "120/yr",
-    },
-    {
-      id: 3,
-      icon: "./assets/icon-pro.svg",
-      title: "Pro",
-      monthly: "15/mo",
-      yearly: "150/yr",
-    },
-  ]);
+  //   const Plans = require("../assets/Plans.json");
 
   function handlePlanSubmit() {
-    const selectedPlan = plans[selected];
+    const selectedPlan = Plans[selected];
     const billing = duration === 1 ? "Yearly" : "Monthly";
     const price = duration === 1 ? selectedPlan.yearly : selectedPlan.monthly;
 
@@ -60,7 +39,7 @@ function SelectPlan() {
   }
 
   return (
-    <main className="w-11/12 md:w-2/3 h-full flex flex-col justify-between">
+    <main className="w-11/12 md:w-2/3 h-full flex flex-col justify-between gap-4 md:gap-0">
       <div className="flex flex-col gap-2">
         <h1 className="text-xl md:text-3xl font-bold">Selct Your Plan</h1>
         <p className="text-sm text-zinc-400">
@@ -70,7 +49,7 @@ function SelectPlan() {
       {/* PLANS */}
       <div className="md:-mt-12">
         <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-4 mb-5">
-          {plans.map((plan, index) => (
+          {Plans.map((plan, index) => (
             <div
               key={plan.id}
               onClick={() => setSelected(index)}
@@ -116,7 +95,7 @@ function SelectPlan() {
         </div>
       </div>
       {/* BUTTON */}
-      <div className="hidden md:flex justify-between items-baseline">
+      <div className="flex justify-between items-baseline mt-2 md:mt-0">
         <button
           onClick={goBack}
           className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all"
@@ -125,7 +104,7 @@ function SelectPlan() {
         </button>
         <button
           onClick={handlePlanSubmit}
-          className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
+          className="p-2 md:p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
         >
           Next Step
         </button>

@@ -3,10 +3,10 @@ import { useState } from "react";
 
 function Layout() {
   return (
-    <main className="w-full h-screen flex justify-center items-center bg-main">
-      <div className="w-full md:w-2/3 pb-3 md:p-3 md:bg-white rounded-lg h-full md:h-3/4 flex flex-col justify-between md:justify-normal md:flex-row relative">
+    <main className="w-full md:min-h-screen lg:min-h-0 lg:h-screen flex justify-center items-center bg-main md:p-2 lg:px-0">
+      <div className="w-full lg:w-2/3 pb-3 md:p-3 md:bg-white rounded-lg h-full md:min-h-full max-h-[700px] lg:min-h-0 lg:h-4/5 flex flex-col justify-between md:justify-normal md:flex-row relative">
         {/* SIDE NAV */}
-        <div className="w-full flex flex-row justify-center py-5 items-start md:flex-col gap-5 md:p-5 md:w-[30%] h-32 md:h-full bg-[url('./assets/bg-sidebar-mobile.svg')] md:bg-[url('./assets/bg-sidebar-desktop.svg')] bg-cover bg-center md:rounded-lg">
+        <div className="w-full flex flex-row justify-center md:justify-normal py-5 items-start md:flex-col gap-5 md:p-5 md:w-[30%] h-32 md:h-96 lg:min-h-full bg-[url('./assets/bg-sidebar-mobile.svg')] md:bg-[url('./assets/bg-sidebar-desktop.svg')] bg-cover bg-center md:rounded-lg">
           {/* "YOUR INFO" nav */}
           <NavLink
             to="your-info"
@@ -102,14 +102,14 @@ function Layout() {
         <div className="md:w-3/4 left-1/2 -translate-x-1/2 top-16 absolute md:relative md:top-auto md:left-auto md:translate-x-0 bg-white w-11/12 rounded-lg md:rounded-none flex justify-center items-center p-3">
           <Outlet />
         </div>
-        <div className="md:hidden flex justify-between items-baseline">
+        {/* <div className="md:hidden flex justify-between items-baseline">
           <button className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all">
             Go Back
           </button>
           <button className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all">
             Next Step
           </button>
-        </div>
+        </div> */}
       </div>
     </main>
   );

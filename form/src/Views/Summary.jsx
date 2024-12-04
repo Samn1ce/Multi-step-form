@@ -80,7 +80,7 @@ function Summary() {
         </div>
       </div>
       {/* BUTTON */}
-      <div className="hidden md:flex justify-between items-baseline">
+      <div className="flex justify-between items-baseline mt-2 md:mt-0">
         <button
           onClick={() => navigate(-1)}
           className="p-3 text-button rounded-md font-bold hover:bg-hover transition-all"
@@ -89,7 +89,7 @@ function Summary() {
         </button>
         <button
           onClick={handleSummaryClick}
-          className="p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
+          className="p-2 md:p-3 bg-button rounded-md text-zinc-100 font-bold hover:bg-hover transition-all"
         >
           Next Step
         </button>
